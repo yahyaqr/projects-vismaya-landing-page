@@ -1,50 +1,64 @@
 <template>
-    <section class="container mx-auto px-4 py-20">
-        <div
-            class="flex flex-col sm:flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-12">
-            <!-- Image -->
-            <img src="../assets/Teamwork.jpg" alt="Our dedicated team at work"
-                class="w-full md:w-1/2 aspect-square object-cover rounded-lg shadow-lg mb-4 md:mb-0" />
-            <!-- Content -->
-            <div class="text-justify md:text-left md:w-1/2">
-                <h3 class="text-sm text-teal-500 mb-4">About us</h3>
-                <h2 class="text-3xl sm:text-4xl font-bold mb-6 text-gray-800">
-                    A team built for creativity<br />
-                    and technological innovation
-                </h2>
-                <p class="text-gray-600 mb-6">
-                    Vismaya Lab is led by three cofounders and powered by a dynamic team of 4 marketing-design
-                    professionals and 4 IT specialists. Our Marketing-Design Division excels in enhancing brand
-                    visibility and engagement, while our IT Division focuses on cutting-edge software development under
-                    Vismaya AI Lab.
-                </p>
-                <p class="text-gray-600 mb-6">
-                    The name "VISMAYA" comes from Sanskrit, meaning “amazing, remarkable, astonishing.” Derived from the
-                    words वि- (vi-, "a part of, something") and ‎ स्मय (smaya, "pride, magic, divine illusion"), it
-                    reflects
-                    our mission to deliver impactful services that elevate our clients’ image and drive innovation.
-                </p>
-                <div class="flex flex-wrap justify-center md:justify-start gap-6">
-                    <!-- Metric 1 -->
-                    <div class="flex flex-col items-center md:items-start">
-                        <h4 class="text-3xl font-bold text-orange-500">20+</h4>
-                        <p class="text-gray-600 sm:block hidden">Projects successfully delivered</p>
-                        <p class="text-gray-600 sm:hidden block">Projects</p>
+    <div class="bg-gray-50 p-8 sm:p-16 flex items-center justify-center">
+        <div class="w-full max-w-6xl bg-white rounded-2xl shadow-md overflow-hidden">
+            <div class="flex flex-col md:flex-row">
+                <!-- Image Section -->
+                <div class="md:w-1/3 relative h-[200px] md:h-auto">
+                    <div alt="Team collaboration" class="w-full h-full object-cover bg-red" />
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent"></div>
+                </div>
+
+                <!-- Content Section -->
+                <div class="md:w-2/3 p-6 md:p-8 space-y-6">
+                    <div>
+                        <span class="text-teal-500 text-sm font-medium tracking-wider uppercase">About us</span>
+                        <h2 class="text-2xl font-bold text-gray-900 mt-2">
+                            A team built for creativity and technological innovation
+                        </h2>
                     </div>
-                    <!-- Metric 2 -->
-                    <div class="flex flex-col items-center md:items-start">
-                        <h4 class="text-3xl font-bold text-orange-500">90%</h4>
-                        <p class="text-gray-600 sm:block hidden">Client retention rate</p>
-                        <p class="text-gray-600 sm:hidden block">Retention</p>
+
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Vismaya Lab is led by three cofounders and powered by a dynamic team of 4
+                        marketing-design professionals and 4 IT specialists. Our Marketing-Design
+                        Division excels in enhancing brand visibility and engagement, while our IT
+                        Division focuses on cutting-edge software development under Vismaya AI Lab.
+                    </p>
+
+                    <!-- Stats Row -->
+                    <div class="flex justify-start space-x-12 py-4 border-y border-gray-100">
+                        <div class="stat-item">
+                            <span class="text-2xl font-bold text-teal-500">20+</span>
+                            <p class="text-xs text-gray-500">Projects delivered</p>
+                        </div>
+                        <div class="stat-item">
+                            <span class="text-2xl font-bold text-teal-500">90%</span>
+                            <p class="text-xs text-gray-500">Client retention</p>
+                        </div>
+                        <div class="stat-item">
+                            <span class="text-2xl font-bold text-teal-500">11</span>
+                            <p class="text-xs text-gray-500">Team members</p>
+                        </div>
                     </div>
-                    <!-- Metric 3 -->
-                    <div class="flex flex-col items-center md:items-start">
-                        <h4 class="text-3xl font-bold text-orange-500">11</h4>
-                        <p class="text-gray-600 sm:block hidden">Talents driving innovation</p>
-                        <p class="text-gray-600 sm:hidden block">Talents</p>
+
+                    <!-- Etymology -->
+                    <div class="text-xs text-gray-500 leading-relaxed bg-gray-50 p-4 rounded-lg">
+                        The name "VISMAYA" comes from Sanskrit, meaning 'amazing, remarkable,
+                        astonishing.' Derived from the words वि- (vi-, "a part of, something") and स्मय
+                        (smaya, "pride, magic, divine illusion"), it reflects our mission to deliver
+                        impactful services that elevate our clients' image and drive innovation.
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </template>
+
+<style scoped>
+.stat-item {
+    @apply flex flex-col items-start;
+}
+
+.stat-item span {
+    @apply mb-1;
+}
+</style>

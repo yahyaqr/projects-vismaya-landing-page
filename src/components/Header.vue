@@ -10,9 +10,9 @@
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-6">
-                <a href="/portfolio" class="text-gray-800 hover:text-teal-500 transition-colors text-base font-medium">
+                <!-- <a href="/portfolio" class="text-gray-800 hover:text-teal-500 transition-colors text-base font-medium">
                     Our Portfolio
-                </a>
+                </a> -->
                 <!-- Hire Us Button with Text Change and Animation -->
                 <div class="relative">
                     <button @click="openHireUsModal"
@@ -42,10 +42,10 @@
 
         <!-- Mobile Menu -->
         <div v-if="mobileMenuOpen" class="md:hidden mt-4 space-y-2">
-            <a href="/portfolio"
+            <!-- <a href="/portfolio"
                 class="block w-full text-left py-2 px-4 text-sm text-gray-800 hover:bg-gray-100 rounded transition-colors">
                 Our Portfolio
-            </a>
+            </a> -->
             <button @click="openHireUsModal"
                 class="block w-full text-left py-2 px-4 text-sm text-gray-800 hover:bg-gray-100 rounded transition-colors">
                 Hire Us

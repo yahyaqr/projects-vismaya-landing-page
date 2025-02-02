@@ -1,233 +1,168 @@
 <template>
-    <section class="container mx-auto px-4 py-20">
-        <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-800">
-            High-impact services<br />
-            for your business
-        </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Cards -->
-            <div v-for="(service, index) in services" :key="index"
-                class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <!-- Icon -->
-                <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center mb-4">
-                    <component :is="service.icon" class="w-6 h-6 text-teal-500" />
-                </div>
-                <!-- Title -->
-                <h3 class="text-xl font-semibold mb-2 text-gray-800">{{ service.title }}</h3>
-                <!-- Description -->
-                <p class="text-gray-600 mb-4">{{ service.description }}</p>
-                <!-- Price Range -->
-                <p class="text-teal-500 text-sm font-semibold mb-2">Starting from: {{ service.priceRange }}</p>
-                <!-- See Package Button -->
-                <button @click="openPackageModal(index)"
-                    class="w-full bg-gray-100 text-gray-800 font-medium py-2 rounded-lg hover:bg-gray-200 transition-colors">
-                    See Package
-                </button>
-            </div>
-        </div>
-
-        <!-- Modal -->
-        <div v-if="activeService !== null"
-            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
-            @click.self="closePackageModal">
-            <div class="bg-white rounded-lg px-4 py-5 sm:px-6 sm:py-6 max-w-3xl w-full relative shadow-lg">
-                <!-- Modal Title -->
-                <h2 class="text-lg font-bold text-teal-500 mb-6 text-center">
-                    {{ services[activeService].title }} - Packages and Prices
+    <div class="bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-800">
+                    High-impact services<br />
+                    for your business
                 </h2>
-                <!-- Horizontal Packages -->
-                <div class="flex flex-wrap gap-4 justify-center">
-                    <div v-for="(packageInfo, idx) in services[activeService].packages" :key="idx"
-                        class="border border-gray-300 rounded-lg p-4 w-full xs:w-[90%] sm:w-[48%] lg:w-[30%] min-w-[280px] flex flex-col">
-                        <div class="flex justify-between items-center mb-2">
-                            <h3 class="text-sm font-semibold text-teal-500">{{ packageInfo.name }}</h3>
-                            <span class="text-teal-500 font-semibold">{{ packageInfo.price }}</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div v-for="service in services" :key="service.title"
+                    class="group relative bg-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl"
+                    :class="{ 'ring-2 ring-teal-500 ring-offset-2': service.popular }">
+                    <!-- Popular Badge -->
+                    <div v-if="service.popular"
+                        class="absolute top-2 right-2 bg-teal-500 text-white text-xs font-medium px-2 py-0.5 rounded-full">
+                        Popular
+                    </div>
+
+                    <div class="p-5">
+                        <!-- Icon with animated background -->
+                        <div class="relative inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 
+                       bg-gradient-to-br from-teal-50 to-teal-100 group-hover:from-teal-100 group-hover:to-teal-200 
+                       transition-all duration-300">
+                            <component :is="service.icon"
+                                class="w-6 h-6 text-teal-600 transform group-hover:scale-110 transition-transform duration-300" />
+                            <div
+                                class="absolute inset-0 rounded-xl bg-teal-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300">
+                            </div>
                         </div>
-                        <p class="text-sm text-gray-600 mb-2">
-                            <i class="far fa-calendar"></i> Duration: {{ packageInfo.duration }}
+
+                        <!-- Content -->
+                        <h3
+                            class="text-xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors duration-300">
+                            {{ service.title }}
+                        </h3>
+
+                        <p class="text-sm text-gray-600 mb-4 h-12 leading-snug line-clamp-2">
+                            {{ service.description }}
                         </p>
-                        <p class="text-sm text-gray-700 whitespace-pre-line">{{ packageInfo.description }}</p>
+
+                        <!-- Features List -->
+                        <ul class="space-y-1 mb-4">
+                            <li v-for="feature in service.features" :key="feature"
+                                class="flex items-center text-gray-600">
+                                <CheckIcon class="w-4 h-4 text-teal-500 mr-1 flex-shrink-0" />
+                                <span class="text-xs">{{ feature }}</span>
+                            </li>
+                        </ul>
+
+                        <!-- Price -->
+                        <div class="mb-4 text-sm">
+                            <span class="text-gray-500">Starting from</span>
+                            <div class="font-bold text-gray-900">
+                                {{ service.price.split(' - ')[0] }}
+                                <span class="text-xs font-normal text-gray-500"> - {{ service.price.split(' - ')[1]
+                                    }}</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Button -->
+                        <!-- <button class="w-full py-2 px-4 rounded-lg text-sm font-semibold transition-all duration-300
+                       bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700
+                       text-white shadow-md shadow-teal-500/20 hover:shadow-teal-500/30
+                       transform hover:-translate-y-0.5 active:translate-y-0">
+                            <div class="flex items-center justify-center space-x-1">
+                                <span>See Package</span>
+                                <ArrowRightIcon
+                                    class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                            </div>
+                        </button> -->
                     </div>
                 </div>
             </div>
         </div>
-
-
-    </section>
+    </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { Pencil, Layout, BarChart, PenTool, BrainCircuit } from "lucide-vue-next";
+import {
+    PenLine,
+    Layout,
+    BarChart2,
+    Globe,
+    Settings,
+    Briefcase,
+    Check as CheckIcon,
+    ArrowRight as ArrowRightIcon
+} from 'lucide-vue-next'
 
-const services = ref([
+const services = [
     {
-        icon: Pencil,
-        title: "Content Marketing",
-        description: "We create engaging content to boost your brand awareness and drive engagement.",
-        priceRange: "IDR 500,000 - IDR 1,500,000",
-        packages: [
-            {
-                name: "Basic Content Package",
-                price: "IDR 500,000",
-                duration: "2 Days",
-                description: "- 3 Blog Articles\n- Basic Copywriting\n- Free Consultation",
-            },
-            {
-                name: "Standard Content Package",
-                price: "IDR 1,000,000",
-                duration: "4 Days",
-                description: "- 5 Blog Articles\n- Advanced Copywriting\n- Content Planning\n- Free Consultation",
-            },
-            {
-                name: "Premium Content Package",
-                price: "IDR 1,500,000",
-                duration: "7 Days",
-                description: "- 10 Blog Articles\n- Advanced Copywriting\n- SEO Optimization\n- Free Consultation and Final Report",
-            },
-        ],
+        icon: PenLine,
+        title: 'Content Marketing',
+        description: 'We create engaging content to boost your brand awareness and drive engagement.',
+        price: 'IDR 500,000 - IDR 1,500,000',
+        popular: true,
+        features: [
+            'Social media content',
+            'Blog articles',
+            'Email newsletters',
+            'Content strategy'
+        ]
     },
     {
         icon: Layout,
-        title: "Graphic Design",
-        description: "Creative graphic design services to make your brand stand out.",
-        priceRange: "IDR 300,000 - IDR 1,000,000",
-        packages: [
-            {
-                name: "Basic Design Package",
-                price: "IDR 300,000",
-                duration: "3 Days",
-                description: "- 3 Feed Posts\n- 1 Story Design\n- 2 Free Revisions",
-            },
-            {
-                name: "Standard Design Package",
-                price: "IDR 600,000",
-                duration: "5 Days",
-                description: "- 5 Feed Posts\n- 3 Story Designs\n- High-Resolution Files\n- 3 Free Revisions",
-            },
-            {
-                name: "Premium Design Package",
-                price: "IDR 1,000,000",
-                duration: "7 Days",
-                description: "- 10 Feed Posts\n- 5 Story Designs\n- Unlimited Revisions\n- Branding Guide and Master Files",
-            },
-        ],
+        title: 'Graphic Design',
+        description: 'Creative graphic design services to make your brand stand out.',
+        price: 'IDR 300,000 - IDR 1,000,000',
+        features: [
+            'Logo design',
+            'Brand guidelines',
+            'Marketing materials',
+            'Social media graphics'
+        ]
     },
     {
-        icon: BarChart,
-        title: "Digital Marketing",
-        description: "Reach your target audience with effective digital marketing strategies.",
-        priceRange: "IDR 800,000 - IDR 2,500,000",
-        packages: [
-            {
-                name: "Basic Marketing Package",
-                price: "IDR 800,000",
-                duration: "5 Days",
-                description: "- Social Media Campaign\n- 3 Sponsored Posts\n- Basic Analytics",
-            },
-            {
-                name: "Advanced Marketing Package",
-                price: "IDR 1,500,000",
-                duration: "10 Days",
-                description: "- Social Media Campaign\n- 5 Sponsored Posts\n- Advanced Analytics and Optimization",
-            },
-            {
-                name: "Enterprise Marketing Package",
-                price: "IDR 2,500,000",
-                duration: "14 Days",
-                description: "- Full Campaign Management\n- Custom Ad Designs\n- A/B Testing and Optimization\n- Comprehensive Analytics Report",
-            },
-        ],
+        icon: BarChart2,
+        title: 'Digital Marketing',
+        description: 'Reach your target audience with effective digital marketing strategies.',
+        price: 'IDR 800,000 - IDR 2,500,000',
+        popular: true,
+        features: [
+            'SEO optimization',
+            'PPC campaigns',
+            'Social media marketing',
+            'Analytics & reporting'
+        ]
     },
     {
-        icon: PenTool,
-        title: "Web Design",
-        description: "Beautiful and functional websites designed to deliver results.",
-        priceRange: "IDR 1,200,000 - IDR 5,000,000",
-        packages: [
-            {
-                name: "Starter Website Package",
-                price: "IDR 1,200,000",
-                duration: "7 Days",
-                description: "- 3 Pages (Home, About, Contact)\n- Mobile Responsive\n- Basic SEO",
-            },
-            {
-                name: "Business Website Package",
-                price: "IDR 3,000,000",
-                duration: "14 Days",
-                description: "- 5 Pages (Home, Services, About, Contact, Blog)\n- Mobile Responsive\n- SEO Optimized\n- CMS Integration",
-            },
-            {
-                name: "Premium Website Package",
-                price: "IDR 5,000,000",
-                duration: "21 Days",
-                description: "- Custom Design\n- Unlimited Pages\n- E-commerce Integration\n- Advanced SEO and 1-Month Maintenance",
-            },
-        ],
+        icon: Globe,
+        title: 'Web Design',
+        description: 'Beautiful and functional websites designed to deliver results.',
+        price: 'IDR 1,200,000 - IDR 5,000,000',
+        features: [
+            'Responsive design',
+            'UX optimization',
+            'Performance tuning',
+            'SEO friendly'
+        ]
     },
     {
-        icon: BrainCircuit,
-        title: "IT Consulting",
-        description: "Expert guidance on technology solutions tailored to your business needs.",
-        priceRange: "IDR 1,000,000 - IDR 3,000,000",
-        packages: [
-            {
-                name: "Basic Consulting Package",
-                price: "IDR 1,000,000",
-                duration: "2 Days",
-                description: "- IT Needs Analysis\n- Basic IT Solutions Report\n- 1 Free Consultation",
-            },
-            {
-                name: "Advanced Consulting Package",
-                price: "IDR 2,000,000",
-                duration: "5 Days",
-                description: "- Comprehensive IT Needs Analysis\n- Latest Technology Recommendations\n- 3 Free Consultations",
-            },
-            {
-                name: "Custom Consulting Package",
-                price: "IDR 3,000,000",
-                duration: "7 Days",
-                description: "- Customized IT Solutions\n- Basic Implementation\n- Unlimited Free Consultations",
-            },
-        ],
+        icon: Settings,
+        title: 'IT Consulting',
+        description: 'Expert guidance on technology solutions tailored to your business needs.',
+        price: 'IDR 1,000,000 - IDR 3,000,000',
+        features: [
+            'Technical assessment',
+            'Solution architecture',
+            'Security audit',
+            'Cloud consulting'
+        ]
     },
     {
-        icon: BarChart,
-        title: "Brand Identity",
-        description: "We help establish and grow your brand identity across all channels.",
-        priceRange: "IDR 600,000 - IDR 2,000,000",
-        packages: [
-            {
-                name: "Starter Branding Package",
-                price: "IDR 600,000",
-                duration: "3 Days",
-                description: "- Logo Design\n- Color Palette and Typography\n- Basic Branding Guidelines",
-            },
-            {
-                name: "Professional Branding Package",
-                price: "IDR 1,200,000",
-                duration: "7 Days",
-                description: "- Logo Design\n- Full Branding Kit (Color Palette, Typography, Iconography)\n- Social Media Templates\n- Advanced Branding Guidelines",
-            },
-            {
-                name: "Complete Branding Package",
-                price: "IDR 2,000,000",
-                duration: "10 Days",
-                description: "- Custom Logo and Visual Identity Design\n- Full Branding Kit\n- Marketing Materials Design (Brochures, Posters, etc.)\n- Comprehensive Branding Guidelines",
-            },
-        ],
-    },
-]);
-
-const activeService = ref(null);
-
-// Open modal for a specific service
-const openPackageModal = (index) => {
-    activeService.value = index;
-};
-
-// Close the modal
-const closePackageModal = () => {
-    activeService.value = null;
-};
+        icon: Briefcase,
+        title: 'Brand Identity',
+        description: 'We help establish and grow your brand identity across all channels.',
+        price: 'IDR 600,000 - IDR 2,000,000',
+        features: [
+            'Brand strategy',
+            'Visual identity',
+            'Brand guidelines',
+            'Voice & tone'
+        ]
+    }
+]
 </script>

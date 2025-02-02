@@ -1,6 +1,6 @@
 <template>
     <section class="w-full px-4 py-6 bg-gradient-to-br from-teal-500 to-teal-600">
-        <div class="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="container mx-auto flex flex-col sm:flex-row items-center justify-between">
             <!-- Text Content -->
             <div class="text-left sm:w-1/2">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-2 text-white">
@@ -11,27 +11,26 @@
                 </p>
             </div>
 
-            <!-- Button and Countdown -->
-            <div class="sm:w-1/2 max-w-xs w-full flex flex-col items-center gap-2">
+
+
+            <!-- Button -->
+            <div class="relative group sm:w-1/2 max-w-xs w-full">
+                <div
+                    class="absolute -inset-0.5 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse">
+                </div>
+                <button @click="openHireUsModal"
+                    class="relative w-full px-4 py-3 bg-orange-500 rounded-full leading-none flex items-center justify-center space-x-2"
+                    @mouseover="isHovered = true" @mouseleave="isHovered = false">
+                    <ZapIcon :size="20" class="text-white" />
+                    <span class="text-white font-semibold text-sm sm:text-base">
+                        {{ isHovered ? '50% Discount' : 'Hire Us Now' }}
+                    </span>
+                </button>
                 <!-- Countdown -->
                 <div class="text-white text-xs sm:text-sm font-medium flex items-center space-x-2">
-                    <ClockIcon :size="16" class="text-white" />
-                    <span>Offer Ends In:</span>
-                    <span class="font-mono text-white bg-teal-600 px-2 py-1 rounded">{{ countdown }}</span>
-                </div>
-                <!-- Button -->
-                <div class="relative group w-full">
-                    <div
-                        class="absolute -inset-0.5 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse">
-                    </div>
-                    <button @click="openHireUsModal"
-                        class="relative w-full px-6 py-3 bg-orange-500 rounded-full leading-none flex items-center justify-center space-x-2"
-                        @mouseover="isHovered = true" @mouseleave="isHovered = false">
-                        <ZapIcon :size="24" class="text-white" />
-                        <span class="text-white font-semibold text-base sm:text-lg">
-                            {{ isHovered ? '50% Discount' : 'Hire Us Now' }}
-                        </span>
-                    </button>
+                    <ClockIcon :size="16" class="text-orange-200" />
+                    <span>Ends in:</span>
+                    <span class="font-mono text-orange-100 bg-teal-600 px-2 py-1 rounded-full">{{ countdown }}</span>
                 </div>
             </div>
         </div>

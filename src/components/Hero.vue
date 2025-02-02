@@ -7,18 +7,22 @@
                 <h1 class="text-3xl sm:text-4xl lg:text-6xl font-extrabold leading-tight text-gray-800 mb-6 sm:mb-8">
                     Ready to take business growth<br class="hidden sm:inline" /> to the next level?
                 </h1>
-                <p class="text-gray-600 text-base sm:text-lg lg:text-2xl mb-8 sm:mb-10 leading-relaxed">
-                    Vismaya Lab helps businesses achieve their full potential through innovative digital solutions and
-                    strategic
-                    growth strategies. <span class="text-orange-500 font-semibold">Limited time discounts
-                        available!</span>
-                </p>
+                <div class="mb-6 sm:mb-8 leading-relaxed">
+                    <p class="text-gray-600 text-base sm:text-lg lg:text-2xl mb-2">
+                        Vismaya Lab helps businesses achieve their full potential through innovative digital solutions
+                        and
+                        strategic
+                        growth strategies.
+                    </p>
+                    <p class="text-orange-500 font-semibold text-base sm:text-lg">Limited time discounts
+                        available!</p>
+                </div>
             </div>
             <div class="flex flex-col items-center lg:items-start gap-2 sm:gap-4">
                 <!-- Hire Us Button -->
                 <div class="relative">
                     <button @click="openHireUsModal"
-                        class="relative bg-orange-500 text-white px-8 py-4 sm:px-10 sm:py-5 rounded-full text-lg sm:text-xl font-semibold flex items-center justify-center overflow-hidden group transition-all shadow-lg hover:scale-105 w-[200px]"
+                        class="relative bg-orange-500 text-white px-8 py-4 sm:px-10 sm:py-5 rounded-full text-lg sm:text-xl font-semibold flex items-center justify-center overflow-hidden group transition-all shadow-lg hover:scale-105 w-[200px] cursor-pointer"
                         @mouseover="isHovered = true" @mouseleave="isHovered = false">
                         <!-- Gradient Background -->
                         <div

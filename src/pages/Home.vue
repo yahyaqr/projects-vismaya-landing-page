@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white min-h-screen text-gray-800 font-sans">
+    <div class="min-h-screen text-gray-800 font-sans">
         <!-- Pass openHireUsModal to components that need it -->
         <Header :openHireUsModal="openHireUsModal" />
 
@@ -11,9 +11,9 @@
 
         <AboutSection />
 
-        <ProcessSection />
-
         <ShowcaseSection />
+
+        <TestimonialsSection />
 
         <CallToActionSection :openHireUsModal="openHireUsModal" />
 
@@ -46,6 +46,7 @@ import PartnersSection from '../components/Partners.vue';
 import ServicesSection from '../components/Services.vue';
 import AboutSection from '../components/About.vue';
 import ProcessSection from '../components/Process.vue';
+import TestimonialsSection from '../components/Testimonials/index.vue';
 import ShowcaseSection from '../components/Showcase.vue';
 import CallToActionSection from '../components/CTA.vue';
 import RPS from '../components/RPS.vue';
