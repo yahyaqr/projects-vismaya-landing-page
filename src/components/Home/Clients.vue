@@ -44,23 +44,22 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const clients = [
-    { src: '/clients/berkaslegal.png', alt: 'Berkas Legal', description: 'Legal Competency Training Institute, member of Berkas Amerta Group.' },
-    { src: '/clients/ptchc.png', alt: 'PT CHC', description: 'Leading Indonesian steel fabricator specializing in welded H-beams, bridges, and high-rise buildings.' },
-    { src: '/clients/iwpc.png', alt: 'IWPC', description: 'A community of Indonesian wedding photographers committed to mutual support and excellence in capturing wedding moments.' },
-    { src: '/clients/kmcm.png', alt: 'KMCM', description: 'KMCM Group provides comprehensive eye care services, including consultations, eye examinations, and treatments, with BPJS acceptance.' },
-    { src: '/clients/magalarva.png', alt: 'Magalarva', description: 'Indonesian company producing sustainable protein for animal feed by transforming food waste using Black Soldier Fly larvae.' },
-    { src: '/clients/sabilamall.png', alt: 'Sabilamall', description: 'Indonesian reseller and dropshipper platform offering a wide range of products from over 50 brands, enabling individuals to start their own businesses.' },
-    { src: '/clients/ptsgn.png', alt: 'PT Sumber Guna Nusantara', description: 'Leading supplier and distributor of building finishing materials, including vinyl PVC sheets, carpets, and raised floors.' },
-    { src: '/clients/wbaf.png', alt: 'WBAF', description: 'International organization aiming to ease access to finance for businesses from startup to scale-up, fostering economic development globally.' },
-    { src: '/clients/ptzulin.png', alt: 'PT Zulin', description: 'Pioneering Indonesian company specializing in formwork and scaffolding solutions for various construction projects.' },
-    { src: '/clients/selfashion.png', alt: 'Selfashion', description: 'A startup that enables customers to design and create their own personalized fashion.' },
-    { src: '/clients/congen.png', alt: 'Connecting Generations', description: 'A campaign for the election of the FTUI alumni association president.' },
-    { src: '/clients/fishcore.png', alt: 'Fishcore', description: 'A startup that helps beginner fish farmers learn biofloc cultivation methods.' },
-    { src: '/clients/nyambee.png', alt: 'Nyambee', description: 'A startup that connects micro content creators with corporate clients.' },
-    { src: '/clients/streameal.png', alt: 'Streameal', description: 'An MSME business offering food products designed to accompany movie streaming experiences.' },
-    { src: '/clients/sajadang.png', alt: 'Sajadang', description: 'An initiative for a business competition focused on transforming waste into money.' },
+    { src: '/clients/berkaslegal.png', alt: 'Berkas Legal', description: 'Legal competency training institute.' },
+    { src: '/clients/ptchc.png', alt: 'PT CHC', description: 'Steel fabricator for construction projects.' },
+    { src: '/clients/iwpc.png', alt: 'IWPC', description: 'Community of Indonesian wedding photographers.' },
+    { src: '/clients/kmcm.png', alt: 'KMCM', description: 'Comprehensive eye care service provider.' },
+    { src: '/clients/magalarva.png', alt: 'Magalarva', description: 'Sustainable protein producer from food waste.' },
+    { src: '/clients/sabilamall.png', alt: 'Sabilamall', description: 'Reseller and dropshipper platform in Indonesia.' },
+    { src: '/clients/ptsgn.png', alt: 'PT Sumber Guna Nusantara', description: 'Supplier of building finishing materials.' },
+    { src: '/clients/wbaf.png', alt: 'WBAF', description: 'Global organization supporting business finance.' },
+    { src: '/clients/ptzulin.png', alt: 'PT Zulin', description: 'Formwork and scaffolding solutions provider.' },
+    { src: '/clients/selfashion.png', alt: 'Selfashion', description: 'Custom fashion design startup.' },
+    { src: '/clients/congen.png', alt: 'Connecting Generations', description: 'FTUI alumni election campaign.' },
+    { src: '/clients/fishcore.png', alt: 'Fishcore', description: 'Biofloc fish farming learning platform.' },
+    { src: '/clients/nyambee.png', alt: 'Nyambee', description: 'Platform connecting creators with clients.' },
+    { src: '/clients/streameal.png', alt: 'Streameal', description: 'Food business for movie streaming.' },
+    { src: '/clients/sajadang.png', alt: 'Sajadang', description: 'Competition to turn waste into money.' },
 ];
-
 
 const currentIndex = ref(0);
 let autoScrollInterval;
