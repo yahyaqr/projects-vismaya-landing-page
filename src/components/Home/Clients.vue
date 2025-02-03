@@ -44,22 +44,23 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const clients = [
-    { src: '/clients/berkaslegal.png', alt: 'Berkas Legal', description: 'Providing digital marketing strategies.' },
-    { src: '/clients/ptchc.png', alt: 'PT CHC', description: 'Custom software development solutions.' },
-    { src: '/clients/congen.png', alt: 'Connecting Generations', description: 'Innovative e-commerce solutions.' },
-    { src: '/clients/fishcore.png', alt: 'Fishcore', description: 'UX/UI design services for better engagement.' },
-    { src: '/clients/iwpc.png', alt: 'IWPC', description: 'Cloud infrastructure management support.' },
-    { src: '/clients/kmcm.png', alt: 'KMCM', description: 'Mobile app development for seamless user experience.' },
-    { src: '/clients/magalarva.png', alt: 'Magalarva', description: 'Comprehensive cybersecurity solutions.' },
-    { src: '/clients/nyambee.png', alt: 'Nyambee', description: 'Data analytics and business insights services.' },
-    { src: '/clients/sabilamall.png', alt: 'Sabilamall', description: 'Innovative marketplace solutions for retailers.' },
-    { src: '/clients/sajadang.png', alt: 'Sajadang', description: 'Supply chain optimization and automation.' },
-    { src: '/clients/selfashion.png', alt: 'Selfashion', description: 'Fashion e-commerce platform development.' },
-    { src: '/clients/ptsgn.png', alt: 'PT SGN', description: 'Next-gen digital transformation strategies.' },
-    { src: '/clients/streameal.png', alt: 'Streameal', description: 'On-demand streaming and media solutions.' },
-    { src: '/clients/WBAF.png', alt: 'WBAF', description: 'Financial technology and advisory services.' },
-    { src: '/clients/ptzulin.png', alt: 'PT Zulin', description: 'AI-powered customer engagement solutions.' }
+    { src: '/clients/berkaslegal.png', alt: 'Berkas Legal', description: 'Legal Competency Training Institute, member of Berkas Amerta Group.' },
+    { src: '/clients/ptchc.png', alt: 'PT CHC', description: 'Leading Indonesian steel fabricator specializing in welded H-beams, bridges, and high-rise buildings.' },
+    { src: '/clients/iwpc.png', alt: 'IWPC', description: 'A community of Indonesian wedding photographers committed to mutual support and excellence in capturing wedding moments.' },
+    { src: '/clients/kmcm.png', alt: 'KMCM', description: 'KMCM Group provides comprehensive eye care services, including consultations, eye examinations, and treatments, with BPJS acceptance.' },
+    { src: '/clients/magalarva.png', alt: 'Magalarva', description: 'Indonesian company producing sustainable protein for animal feed by transforming food waste using Black Soldier Fly larvae.' },
+    { src: '/clients/sabilamall.png', alt: 'Sabilamall', description: 'Indonesian reseller and dropshipper platform offering a wide range of products from over 50 brands, enabling individuals to start their own businesses.' },
+    { src: '/clients/ptsgn.png', alt: 'PT Sumber Guna Nusantara', description: 'Leading supplier and distributor of building finishing materials, including vinyl PVC sheets, carpets, and raised floors.' },
+    { src: '/clients/wbaf.png', alt: 'WBAF', description: 'International organization aiming to ease access to finance for businesses from startup to scale-up, fostering economic development globally.' },
+    { src: '/clients/ptzulin.png', alt: 'PT Zulin', description: 'Pioneering Indonesian company specializing in formwork and scaffolding solutions for various construction projects.' },
+    { src: '/clients/selfashion.png', alt: 'Selfashion', description: 'A startup that enables customers to design and create their own personalized fashion.' },
+    { src: '/clients/congen.png', alt: 'Connecting Generations', description: 'A campaign for the election of the FTUI alumni association president.' },
+    { src: '/clients/fishcore.png', alt: 'Fishcore', description: 'A startup that helps beginner fish farmers learn biofloc cultivation methods.' },
+    { src: '/clients/nyambee.png', alt: 'Nyambee', description: 'A startup that connects micro content creators with corporate clients.' },
+    { src: '/clients/streameal.png', alt: 'Streameal', description: 'An MSME business offering food products designed to accompany movie streaming experiences.' },
+    { src: '/clients/sajadang.png', alt: 'Sajadang', description: 'An initiative for a business competition focused on transforming waste into money.' },
 ];
+
 
 const currentIndex = ref(0);
 let autoScrollInterval;
