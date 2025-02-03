@@ -16,7 +16,7 @@
                 <!-- Button -->
                 <a href="https://wa.me/1234567890" target="_blank"
                     class="flex justify-center items-center gap-2 w-full px-6 py-3 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors duration-300 pulse-animation">
-                    <MessageCircle class="w-5 h-5" />
+                    <img :src="'src/assets/whatsapp-white.svg'" class="w-5 h-5" />
                     <span class="text-white font-semibold text-base sm:text-lg">Message Us</span>
                 </a>
             </div>
@@ -25,51 +25,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import { ZapIcon, MessageCircle } from 'lucide-vue-next'
-
-// Props
-defineProps(['openHireUsModal'])
-
-// Reactive state for hover effect
-const isHovered = ref(false)
-
-// Reactive state for countdown
-const countdown = ref('')
-let countdownInterval = null
-
-const startCountdown = () => {
-    const targetTime = new Date(Date.now() + 40 * 60 * 1000) // Set target to 40 minutes from now
-
-    const updateCountdown = () => {
-        const now = new Date()
-        const remainingTime = targetTime - now
-
-        if (remainingTime <= 0) {
-            countdown.value = '00:00:00'
-            clearInterval(countdownInterval) // Stop the countdown
-            return
-        }
-
-        const minutes = String(Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0')
-        const seconds = String(Math.floor((remainingTime % (1000 * 60)) / 1000)).padStart(2, '0')
-
-        countdown.value = `${minutes}:${seconds}`
-    }
-
-    // Update countdown every second
-    updateCountdown() // Initialize countdown immediately
-    countdownInterval = setInterval(updateCountdown, 1000)
-}
-
-// Lifecycle hooks
-onMounted(() => {
-    startCountdown()
-})
-
-onBeforeUnmount(() => {
-    if (countdownInterval) clearInterval(countdownInterval) // Clear interval when component unmounts
-})
 </script>
 
 <style scoped>

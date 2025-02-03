@@ -1,8 +1,9 @@
 <template>
-    <Header :openHireUsModal="openHireUsModal" />
+    <Header />
 
     <section
-        class="container mx-auto px-6 lg:px-20 py-8  flex flex-col-reverse lg:flex-row items-center justify-center gap-6 lg:gap-12">
+        class="container mx-auto px-6 lg:px-20 py-8 flex flex-col-reverse lg:flex-row items-center justify-center gap-6 lg:gap-12">
+
         <!-- Left Content -->
         <div class="lg:flex-1 max-w-2xl text-center lg:text-left">
             <div>
@@ -12,25 +13,23 @@
                 <div class="mb-4 sm:mb-6 leading-relaxed">
                     <p class="text-gray-600 text-base sm:text-lg lg:text-2xl mb-2">
                         Vismaya helps businesses achieve their full potential through innovative digital solutions
-                        and
-                        strategic
-                        growth strategies.
+                        and strategic growth strategies.
                     </p>
-                    <!-- <p class="text-orange-500 font-semibold text-base sm:text-lg">Limited time discounts
-                        available!</p> -->
                 </div>
             </div>
+
             <div class="flex flex-col items-center lg:items-start gap-2 sm:gap-4">
                 <a href="https://wa.me/1234567890" target="_blank"
-                    class="flex slide-button items-center gap-2  px-8 py-4 sm:px-10 sm:py-5 rounded-lg bg-white border-2 border-green-500 text-green-500 overflow-hidden relative">
-                    <MessageCircle class="w-5 h-5 relative z-10" />
+                    class="flex slide-button items-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-lg bg-white border-2 border-green-500 text-green-500 overflow-hidden relative whatsapp-btn">
+
+                    <!-- Default Icon -->
+                    <img :src="'src/assets/whatsapp.svg'" class="w-5 h-5 relative z-10 icon-default" />
+
+                    <!-- White Icon (for hover) -->
+                    <img :src="'src/assets/whatsapp-white.svg'" class="w-5 h-5 relative z-10 icon-hover" />
+
                     <span class="relative z-10">Chat With Us</span>
                 </a>
-
-                <!-- Countdown -->
-                <!-- <p class="text-gray-500 text-sm sm:text-base font-medium text-center lg:text-left">
-                    Limited Offer Ends In: <strong>{{ countdown }}</strong>
-                </p> -->
             </div>
         </div>
 
@@ -45,54 +44,11 @@
 
 <script setup>
 import Header from '../components/Header.vue';
-import { ref, onMounted, onBeforeUnmount } from "vue";
-import { MessageCircle } from "lucide-vue-next";
+import { ref } from "vue";
 
-// Props
-defineProps(["openHireUsModal"]);
-
-// Reactive state for countdown and hover effect
+// Reactive state for 3D rotation
 const illustration = ref(null);
-const countdown = ref("");
-const isHovered = ref(false);
 
-// Countdown logic
-let countdownInterval = null;
-
-const startCountdown = () => {
-    const targetTime = new Date(Date.now() + 40 * 60 * 1000); // Set target to 40 minutes from now
-
-    const updateCountdown = () => {
-        const now = new Date();
-        const remainingTime = targetTime - now;
-
-        if (remainingTime <= 0) {
-            countdown.value = "00:00:00";
-            clearInterval(countdownInterval); // Stop the countdown
-            return;
-        }
-
-        const minutes = String(Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
-        const seconds = String(Math.floor((remainingTime % (1000 * 60)) / 1000)).padStart(2, "0");
-
-        countdown.value = `00:${minutes}:${seconds}`;
-    };
-
-    // Update countdown every second
-    updateCountdown(); // Initialize countdown immediately
-    countdownInterval = setInterval(updateCountdown, 1000);
-};
-
-// Lifecycle hooks
-onMounted(() => {
-    startCountdown();
-});
-
-onBeforeUnmount(() => {
-    if (countdownInterval) clearInterval(countdownInterval); // Clear interval when component unmounts
-});
-
-// 3D Rotation for the illustration
 const handleMouseMove = (event) => {
     const bounds = event.currentTarget.getBoundingClientRect();
     const x = event.clientX - bounds.left;
@@ -112,19 +68,15 @@ const resetTransform = () => {
 };
 </script>
 
-
-<style>
+<style scoped>
 /* Adding perspective to the parent container */
 .perspective {
     perspective: 1000px;
-    /* Creates a 3D perspective */
 }
 
 .illustration {
     transform-origin: center;
-    /* Keep the rotation centered */
     transition: transform 0.3s ease-out;
-    /* Smooth rotation reset */
 }
 
 /* Slide Up Button */
@@ -146,5 +98,18 @@ const resetTransform = () => {
 
 .slide-button:hover {
     color: white;
+}
+
+/* WhatsApp Icon Hover Effect */
+.icon-hover {
+    display: none;
+}
+
+.whatsapp-btn:hover .icon-default {
+    display: none;
+}
+
+.whatsapp-btn:hover .icon-hover {
+    display: inline;
 }
 </style>

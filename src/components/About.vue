@@ -4,14 +4,15 @@
             <div class="flex flex-col md:flex-row">
                 <!-- Image Section -->
                 <div class="md:w-1/3 relative h-[200px] md:h-auto">
-                    <div alt="Team collaboration" class="w-full h-full object-cover bg-red" />
-                    <div class="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent"></div>
+                    <img :src="'src/assets/Foundersy.png'" alt="Team collaboration"
+                        class="w-full h-full object-cover bg-red" />
+                    <!-- <div class="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent"></div> -->
                 </div>
 
                 <!-- Content Section -->
                 <div class="md:w-2/3 p-6 md:p-8 space-y-6">
                     <div>
-                        <span class="text-teal-500 text-sm font-medium tracking-wider uppercase">About us</span>
+                        <span class="text-[#EB4C21] text-sm font-medium tracking-wider uppercase">About us</span>
                         <h2 class="text-2xl font-bold text-gray-900 mt-2">
                             A team built for creativity and technological innovation
                         </h2>
@@ -27,15 +28,15 @@
                     <!-- Stats Row -->
                     <div class="flex justify-start space-x-12 py-4 border-y border-gray-100">
                         <div class="stat-item">
-                            <span class="text-2xl font-bold text-teal-500">20+</span>
+                            <span class="text-2xl font-bold text-[#EB4C21]">20+</span>
                             <p class="text-xs text-gray-500">Projects delivered</p>
                         </div>
                         <div class="stat-item">
-                            <span class="text-2xl font-bold text-teal-500">90%</span>
+                            <span class="text-2xl font-bold text-[#EB4C21]">90%</span>
                             <p class="text-xs text-gray-500">Client retention</p>
                         </div>
                         <div class="stat-item">
-                            <span class="text-2xl font-bold text-teal-500">11</span>
+                            <span class="text-2xl font-bold text-[#EB4C21]">11</span>
                             <p class="text-xs text-gray-500">Team members</p>
                         </div>
                     </div>

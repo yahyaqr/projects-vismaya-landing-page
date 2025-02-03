@@ -1,7 +1,7 @@
 <template>
     <section class="bg-white px-6 py-8 overflow-hidden">
         <div class="max-w-6xl mx-auto mb-6">
-                <span class="text-teal-500 text-sm font-medium tracking-wider uppercase">12K+ Happy Clients</span>
+                <span class="text-teal-500 text-sm font-medium tracking-wider uppercase">20+ Happy Clients</span>
                 <h2 class="text-2xl font-bold text-gray-900 mt-2">
                     Client Experiences
                 </h2>

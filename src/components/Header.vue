@@ -16,7 +16,7 @@
                 <!-- Hire Us Button with Text Change and Animation -->
                 <a href="https://wa.me/1234567890" target="_blank"
                     class="flex items-center gap-2 px-6 py-2 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors duration-300 pulse-animation">
-                    <MessageCircle class="w-5 h-5" />
+                    <img :src="'src/assets/whatsapp-white.svg'" class="w-5 h-5" />
                     <span>Message Us</span>
                 </a>
             </div>
@@ -38,7 +38,7 @@
             </a> -->
             <a href="https://wa.me/1234567890" target="_blank"
                 class="flex items-center gap-2 px-6 py-2 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors duration-300 pulse-animation">
-                <MessageCircle class="w-5 h-5" />
+                <img :src="'src/assets/whatsapp-white.svg'" class="w-5 h-5" />
                 <span>Message Us</span>
             </a>
         </div>
@@ -47,7 +47,7 @@
 
 <script setup>
 import { ref } from "vue";
-import { Menu, X, MessageCircle } from "lucide-vue-next";
+import { Menu, X } from "lucide-vue-next";
 
 defineProps(["openHireUsModal"]);
 
