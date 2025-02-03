@@ -14,7 +14,7 @@
             <!-- Button and Countdown -->
             <div class="sm:w-1/2 max-w-xs w-full flex flex-col items-center gap-2">
                 <!-- Button -->
-                <a href="https://wa.me/1234567890" target="_blank"
+                <a href="https://wa.me/+628976075402" target="_blank"
                     class="flex justify-center items-center gap-2 w-full px-6 py-3 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors duration-300 pulse-animation">
                     <img :src="'src/assets/whatsapp-white.svg'" class="w-5 h-5" />
                     <span class="text-white font-semibold text-base sm:text-lg">Message Us</span>

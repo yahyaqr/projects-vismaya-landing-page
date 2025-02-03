@@ -19,7 +19,7 @@
             </div>
 
             <div class="flex flex-col items-center lg:items-start gap-2 sm:gap-4">
-                <a href="https://wa.me/1234567890" target="_blank"
+                <a href="https://wa.me/+628976075402" target="_blank"
                     class="flex slide-button items-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-lg bg-white border-2 border-green-500 text-green-500 overflow-hidden relative whatsapp-btn">
 
                     <!-- Default Icon -->
@@ -36,14 +36,14 @@
         <!-- Right Illustration -->
         <div class="lg:flex-1 max-w-lg perspective mx-auto sm:mx-0" @mousemove="handleMouseMove"
             @mouseleave="resetTransform">
-            <img ref="illustration" src="../assets/Hero.png" alt="Hero illustration"
+            <img ref="illustration" src="/src/assets/Hero.png" alt="Hero illustration"
                 class="w-64 sm:w-80 lg:w-full max-w-full transform transition-transform duration-300 illustration" />
         </div>
     </section>
 </template>
 
 <script setup>
-import Header from '../components/Header.vue';
+import Header from '../Header.vue';
 import { ref } from "vue";
 
 // Reactive state for 3D rotation

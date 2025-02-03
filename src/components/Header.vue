@@ -14,7 +14,7 @@
                     Our Portfolio
                 </a> -->
                 <!-- Hire Us Button with Text Change and Animation -->
-                <a href="https://wa.me/1234567890" target="_blank"
+                <a href="https://wa.me/+628976075402" target="_blank"
                     class="flex items-center gap-2 px-6 py-2 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors duration-300 pulse-animation">
                     <img :src="'src/assets/whatsapp-white.svg'" class="w-5 h-5" />
                     <span>Message Us</span>
@@ -36,7 +36,7 @@
                 class="block w-full text-left py-2 px-4 text-sm text-gray-800 hover:bg-gray-100 rounded transition-colors">
                 Our Portfolio
             </a> -->
-            <a href="https://wa.me/1234567890" target="_blank"
+            <a href="https://wa.me/+628976075402" target="_blank"
                 class="flex items-center gap-2 px-6 py-2 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors duration-300 pulse-animation">
                 <img :src="'src/assets/whatsapp-white.svg'" class="w-5 h-5" />
                 <span>Message Us</span>
