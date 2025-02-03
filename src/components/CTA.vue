@@ -13,26 +13,12 @@
 
             <!-- Button and Countdown -->
             <div class="sm:w-1/2 max-w-xs w-full flex flex-col items-center gap-2">
-                <!-- Countdown -->
-                <div class="text-white text-xs sm:text-sm font-medium flex items-center space-x-2">
-                    <ClockIcon :size="16" class="text-white" />
-                    <span>Offer Ends In:</span>
-                    <span class="font-mono text-white bg-teal-600 px-2 py-1 rounded">{{ countdown }}</span>
-                </div>
                 <!-- Button -->
-                <div class="relative group w-full">
-                    <div
-                        class="absolute -inset-0.5 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse">
-                    </div>
-                    <button @click="openHireUsModal"
-                        class="relative w-full px-6 py-3 bg-orange-500 rounded-full leading-none flex items-center justify-center space-x-2"
-                        @mouseover="isHovered = true" @mouseleave="isHovered = false">
-                        <ZapIcon :size="24" class="text-white" />
-                        <span class="text-white font-semibold text-base sm:text-lg">
-                            {{ isHovered ? '50% Discount' : 'Hire Us Now' }}
-                        </span>
-                    </button>
-                </div>
+                <a href="https://wa.me/1234567890" target="_blank"
+                    class="flex justify-center items-center gap-2 w-full px-6 py-3 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors duration-300 pulse-animation">
+                    <MessageCircle class="w-5 h-5" />
+                    <span class="text-white font-semibold text-base sm:text-lg">Message Us</span>
+                </a>
             </div>
         </div>
     </section>
@@ -40,7 +26,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-import { ZapIcon, ClockIcon } from 'lucide-vue-next'
+import { ZapIcon, MessageCircle } from 'lucide-vue-next'
 
 // Props
 defineProps(['openHireUsModal'])
@@ -87,19 +73,21 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.animate-pulse {
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+.pulse-animation {
+    animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-
-    0%,
-    100% {
-        opacity: 1;
+    0% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
     }
 
-    50% {
-        opacity: .5;
+    70% {
+        box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
     }
 }
 </style>

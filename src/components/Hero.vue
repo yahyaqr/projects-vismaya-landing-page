@@ -1,46 +1,36 @@
 <template>
+    <Header :openHireUsModal="openHireUsModal" />
+
     <section
-        class="container mx-auto px-6 lg:px-20 py-12 sm:py-16 lg:py-28 flex flex-col-reverse lg:flex-row items-center justify-center gap-6 lg:gap-12">
+        class="container mx-auto px-6 lg:px-20 py-8  flex flex-col-reverse lg:flex-row items-center justify-center gap-6 lg:gap-12">
         <!-- Left Content -->
         <div class="lg:flex-1 max-w-2xl text-center lg:text-left">
             <div>
                 <h1 class="text-3xl sm:text-4xl lg:text-6xl font-extrabold leading-tight text-gray-800 mb-6 sm:mb-8">
                     Ready to take business growth<br class="hidden sm:inline" /> to the next level?
                 </h1>
-                <div class="mb-6 sm:mb-8 leading-relaxed">
+                <div class="mb-4 sm:mb-6 leading-relaxed">
                     <p class="text-gray-600 text-base sm:text-lg lg:text-2xl mb-2">
-                        Vismaya Lab helps businesses achieve their full potential through innovative digital solutions
+                        Vismaya helps businesses achieve their full potential through innovative digital solutions
                         and
                         strategic
                         growth strategies.
                     </p>
-                    <p class="text-orange-500 font-semibold text-base sm:text-lg">Limited time discounts
-                        available!</p>
+                    <!-- <p class="text-orange-500 font-semibold text-base sm:text-lg">Limited time discounts
+                        available!</p> -->
                 </div>
             </div>
             <div class="flex flex-col items-center lg:items-start gap-2 sm:gap-4">
-                <!-- Hire Us Button -->
-                <div class="relative">
-                    <button @click="openHireUsModal"
-                        class="relative bg-orange-500 text-white px-8 py-4 sm:px-10 sm:py-5 rounded-full text-lg sm:text-xl font-semibold flex items-center justify-center overflow-hidden group transition-all shadow-lg hover:scale-105 w-[200px] cursor-pointer"
-                        @mouseover="isHovered = true" @mouseleave="isHovered = false">
-                        <!-- Gradient Background -->
-                        <div
-                            class="absolute inset-0 bg-gradient-to-r from-orange-500 to-teal-500 transition-transform duration-500 ease-out transform -translate-x-full group-hover:translate-x-0">
-                        </div>
-
-                        <!-- Text Toggle -->
-                        <span class="relative z-10">
-                            <span v-if="!isHovered">Hire Us Now</span>
-                            <span v-else>50% Discount</span>
-                        </span>
-                    </button>
-                </div>
+                <a href="https://wa.me/1234567890" target="_blank"
+                    class="flex slide-button items-center gap-2  px-8 py-4 sm:px-10 sm:py-5 rounded-lg bg-white border-2 border-green-500 text-green-500 overflow-hidden relative">
+                    <MessageCircle class="w-5 h-5 relative z-10" />
+                    <span class="relative z-10">Chat With Us</span>
+                </a>
 
                 <!-- Countdown -->
-                <p class="text-gray-500 text-sm sm:text-base font-medium text-center lg:text-left">
+                <!-- <p class="text-gray-500 text-sm sm:text-base font-medium text-center lg:text-left">
                     Limited Offer Ends In: <strong>{{ countdown }}</strong>
-                </p>
+                </p> -->
             </div>
         </div>
 
@@ -54,7 +44,9 @@
 </template>
 
 <script setup>
+import Header from '../components/Header.vue';
 import { ref, onMounted, onBeforeUnmount } from "vue";
+import { MessageCircle } from "lucide-vue-next";
 
 // Props
 defineProps(["openHireUsModal"]);
@@ -135,18 +127,24 @@ const resetTransform = () => {
     /* Smooth rotation reset */
 }
 
-button {
-    position: relative;
-    font-family: inherit;
-    text-transform: capitalize;
+/* Slide Up Button */
+.slide-button::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #22c55e;
+    transition: all 0.3s;
+    z-index: 1;
 }
 
-button:hover {
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+.slide-button:hover::before {
+    top: 0;
 }
 
-button span {
-    white-space: nowrap;
-    /* Prevent text wrapping */
+.slide-button:hover {
+    color: white;
 }
 </style>

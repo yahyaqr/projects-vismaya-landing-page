@@ -1,8 +1,10 @@
 <template>
-    <section class="bg-gray-100 px-6 py-8 overflow-hidden">
+    <section class="bg-white px-6 py-8 overflow-hidden">
         <div class="max-w-6xl mx-auto mb-6">
-            <p class="text-gray-600 mb-2">12K+ Happy Clients</p>
-            <h2 class="text-3xl font-bold text-gray-900">Client Experiences</h2>
+                <span class="text-teal-500 text-sm font-medium tracking-wider uppercase">12K+ Happy Clients</span>
+                <h2 class="text-2xl font-bold text-gray-900 mt-2">
+                    Client Experiences
+                </h2>
         </div>
 
         <div class="max-w-6xl mx-auto space-y-6">

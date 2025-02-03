@@ -5,7 +5,7 @@
             <!-- Logo -->
             <div class="flex items-center space-x-3">
                 <img src="../assets/Logo.png" alt="Vismaya Lab Logo" class="w-10 h-10" />
-                <span class="font-semibold text-teal-500 text-lg">Vismaya Lab</span>
+                <span class="font-semibold text-teal-500 text-2xl">VISMAYA</span>
             </div>
 
             <!-- Desktop Menu -->
@@ -14,21 +14,11 @@
                     Our Portfolio
                 </a> -->
                 <!-- Hire Us Button with Text Change and Animation -->
-                <div class="relative">
-                    <button @click="openHireUsModal"
-                        class="relative bg-orange-500 text-white px-2 py-2 rounded-full text-base font-medium flex items-center justify-center overflow-hidden group transition-all shadow-lg hover:scale-105 w-[140px]"
-                        @mouseover="isHovered = true" @mouseleave="isHovered = false">
-                        <!-- Gradient Background -->
-                        <div
-                            class="absolute inset-0 bg-gradient-to-r from-orange-500 to-teal-500 transition-transform duration-500 ease-out transform -translate-x-full group-hover:translate-x-0">
-                        </div>
-                        <!-- Button Text -->
-                        <span class="relative z-10">
-                            <span v-if="!isHovered">Hire Us</span>
-                            <span v-else>50% Discount</span>
-                        </span>
-                    </button>
-                </div>
+                <a href="https://wa.me/1234567890" target="_blank"
+                    class="flex items-center gap-2 px-6 py-2 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors duration-300 pulse-animation">
+                    <MessageCircle class="w-5 h-5" />
+                    <span>Message Us</span>
+                </a>
             </div>
 
             <!-- Mobile Menu Button -->
@@ -46,22 +36,22 @@
                 class="block w-full text-left py-2 px-4 text-sm text-gray-800 hover:bg-gray-100 rounded transition-colors">
                 Our Portfolio
             </a> -->
-            <button @click="openHireUsModal"
-                class="block w-full text-left py-2 px-4 text-sm text-gray-800 hover:bg-gray-100 rounded transition-colors">
-                Hire Us
-            </button>
+            <a href="https://wa.me/1234567890" target="_blank"
+                class="flex items-center gap-2 px-6 py-2 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors duration-300 pulse-animation">
+                <MessageCircle class="w-5 h-5" />
+                <span>Message Us</span>
+            </a>
         </div>
     </header>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import { Menu, X } from "lucide-vue-next";
+import { Menu, X, MessageCircle } from "lucide-vue-next";
 
 defineProps(["openHireUsModal"]);
 
 const mobileMenuOpen = ref(false);
-const isHovered = ref(false);
 
 const toggleMobileMenu = () => {
     mobileMenuOpen.value = !mobileMenuOpen.value;
@@ -69,21 +59,21 @@ const toggleMobileMenu = () => {
 </script>
 
 <style>
-/* Button Styling */
-button {
-    position: relative;
-    font-family: inherit;
-    text-transform: capitalize;
-    width: 140px;
-    /* Fixed width to ensure consistent size on hover */
+.pulse-animation {
+    animation: pulse 2s infinite;
 }
 
-button span {
-    white-space: nowrap;
-    /* Prevent text wrapping */
-}
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+    }
 
-button:hover {
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    70% {
+        box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
 }
 </style>

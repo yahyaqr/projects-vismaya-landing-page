@@ -1,8 +1,5 @@
 <template>
-    <div class="min-h-screen text-gray-800 font-sans">
-        <!-- Pass openHireUsModal to components that need it -->
-        <Header :openHireUsModal="openHireUsModal" />
-
+    <div class="text-gray-800 font-sans">
         <HeroSection :openHireUsModal="openHireUsModal" />
 
         <PartnersSection />
@@ -40,7 +37,6 @@
 import { ref, onMounted } from 'vue';
 
 // Importing the modularized components
-import Header from '../components/Header.vue';
 import HeroSection from '../components/Hero.vue';
 import PartnersSection from '../components/Partners.vue';
 import ServicesSection from '../components/Services.vue';
