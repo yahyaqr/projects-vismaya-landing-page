@@ -4,7 +4,7 @@
             <div class="flex flex-col md:flex-row">
                 <!-- Image Section -->
                 <div class="md:w-1/3 relative h-[200px] md:h-auto">
-                    <img :src="'src/assets/Foundersy.png'" alt="Team collaboration"
+                    <img src="/src/assets/Foundersy.png" alt="Team collaboration"
                         class="w-full h-full object-cover bg-red" />
                     <!-- <div class="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent"></div> -->
                 </div>

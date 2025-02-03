@@ -4,7 +4,7 @@
         <nav class="flex justify-between items-center">
             <!-- Logo -->
             <div class="flex items-center space-x-3">
-                <img src="../assets/Logo.png" alt="Vismaya Lab Logo" class="w-10 h-10" />
+                <img src="/src/assets/Logo.png" alt="Vismaya Lab Logo" class="w-10 h-10" />
                 <span class="font-semibold text-teal-500 text-2xl">VISMAYA</span>
             </div>
 
@@ -16,7 +16,7 @@
                 <!-- Hire Us Button with Text Change and Animation -->
                 <a href="https://wa.me/+628976075402" target="_blank"
                     class="flex items-center gap-2 px-6 py-2 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors duration-300 pulse-animation">
-                    <img :src="'src/assets/whatsapp-white.svg'" class="w-5 h-5" />
+                    <img src="/src/assets/whatsapp-white.svg" class="w-5 h-5" />
                     <span>Message Us</span>
                 </a>
             </div>
@@ -38,7 +38,7 @@
             </a> -->
             <a href="https://wa.me/+628976075402" target="_blank"
                 class="flex items-center gap-2 px-6 py-2 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors duration-300 pulse-animation">
-                <img :src="'src/assets/whatsapp-white.svg'" class="w-5 h-5" />
+                <img src="/src/assets/whatsapp-white.svg" class="w-5 h-5" />
                 <span>Message Us</span>
             </a>
         </div>

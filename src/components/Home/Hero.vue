@@ -23,10 +23,10 @@
                     class="flex slide-button items-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-lg bg-white border-2 border-green-500 text-green-500 overflow-hidden relative whatsapp-btn">
 
                     <!-- Default Icon -->
-                    <img :src="'src/assets/whatsapp.svg'" class="w-5 h-5 relative z-10 icon-default" />
+                    <img src="/src/assets/whatsapp.svg" class="w-5 h-5 relative z-10 icon-default" />
 
                     <!-- White Icon (for hover) -->
-                    <img :src="'src/assets/whatsapp-white.svg'" class="w-5 h-5 relative z-10 icon-hover" />
+                    <img src="/src/assets/whatsapp-white.svg" class="w-5 h-5 relative z-10 icon-hover" />
 
                     <span class="relative z-10">Chat With Us</span>
                 </a>
