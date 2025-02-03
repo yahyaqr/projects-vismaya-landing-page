@@ -44,21 +44,21 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const clients = [
-    { src: '/src/assets/clients/berkaslegal.png', alt: 'Berkas Legal', description: 'Providing digital marketing strategies.' },
-    { src: '/src/assets/clients/ptchc.png', alt: 'PT CHC', description: 'Custom software development solutions.' },
-    { src: '/src/assets/clients/congen.png', alt: 'Connecting Generations', description: 'Innovative e-commerce solutions.' },
-    { src: '/src/assets/clients/fishcore.png', alt: 'Fishcore', description: 'UX/UI design services for better engagement.' },
-    { src: '/src/assets/clients/iwpc.png', alt: 'IWPC', description: 'Cloud infrastructure management support.' },
-    { src: '/src/assets/clients/kmcm.png', alt: 'KMCM', description: 'Mobile app development for seamless user experience.' },
-    { src: '/src/assets/clients/magalarva.png', alt: 'Magalarva', description: 'Comprehensive cybersecurity solutions.' },
-    { src: '/src/assets/clients/nyambee.png', alt: 'Nyambee', description: 'Data analytics and business insights services.' },
-    { src: '/src/assets/clients/sabilamall.png', alt: 'Sabilamall', description: 'Innovative marketplace solutions for retailers.' },
-    { src: '/src/assets/clients/sajadang.png', alt: 'Sajadang', description: 'Supply chain optimization and automation.' },
-    { src: '/src/assets/clients/selfashion.png', alt: 'Selfashion', description: 'Fashion e-commerce platform development.' },
-    { src: '/src/assets/clients/ptsgn.png', alt: 'PT SGN', description: 'Next-gen digital transformation strategies.' },
-    { src: '/src/assets/clients/streameal.png', alt: 'Streameal', description: 'On-demand streaming and media solutions.' },
-    { src: '/src/assets/clients/WBAF.png', alt: 'WBAF', description: 'Financial technology and advisory services.' },
-    { src: '/src/assets/clients/ptzulin.png', alt: 'PT Zulin', description: 'AI-powered customer engagement solutions.' }
+    { src: '/assets/clients/berkaslegal.png', alt: 'Berkas Legal', description: 'Providing digital marketing strategies.' },
+    { src: '/assets/clients/ptchc.png', alt: 'PT CHC', description: 'Custom software development solutions.' },
+    { src: '/assets/clients/congen.png', alt: 'Connecting Generations', description: 'Innovative e-commerce solutions.' },
+    { src: '/assets/clients/fishcore.png', alt: 'Fishcore', description: 'UX/UI design services for better engagement.' },
+    { src: '/assets/clients/iwpc.png', alt: 'IWPC', description: 'Cloud infrastructure management support.' },
+    { src: '/assets/clients/kmcm.png', alt: 'KMCM', description: 'Mobile app development for seamless user experience.' },
+    { src: '/assets/clients/magalarva.png', alt: 'Magalarva', description: 'Comprehensive cybersecurity solutions.' },
+    { src: '/assets/clients/nyambee.png', alt: 'Nyambee', description: 'Data analytics and business insights services.' },
+    { src: '/assets/clients/sabilamall.png', alt: 'Sabilamall', description: 'Innovative marketplace solutions for retailers.' },
+    { src: '/assets/clients/sajadang.png', alt: 'Sajadang', description: 'Supply chain optimization and automation.' },
+    { src: '/assets/clients/selfashion.png', alt: 'Selfashion', description: 'Fashion e-commerce platform development.' },
+    { src: '/assets/clients/ptsgn.png', alt: 'PT SGN', description: 'Next-gen digital transformation strategies.' },
+    { src: '/assets/clients/streameal.png', alt: 'Streameal', description: 'On-demand streaming and media solutions.' },
+    { src: '/assets/clients/WBAF.png', alt: 'WBAF', description: 'Financial technology and advisory services.' },
+    { src: '/assets/clients/ptzulin.png', alt: 'PT Zulin', description: 'AI-powered customer engagement solutions.' }
 ];
 
 const currentIndex = ref(0);
