@@ -1,115 +1,84 @@
 <template>
-    <Header />
-
     <section
-        class="container mx-auto px-6 lg:px-20 py-8 flex flex-col-reverse lg:flex-row items-center justify-center gap-6 lg:gap-12">
+        class="relative w-full min-h-screen px-4 sm:px-8 lg:px-16 xl:px-32 flex justify-center items-center text-center text-white overflow-hidden font-sans">
 
-        <!-- Left Content -->
-        <div class="lg:flex-1 max-w-2xl text-center lg:text-left">
-            <div>
-                <h1 class="text-3xl sm:text-4xl lg:text-6xl font-extrabold leading-tight text-gray-800 mb-6 sm:mb-8">
-                    Ready to take business growth<br class="hidden sm:inline" /> to the next level?
-                </h1>
-                <div class="mb-4 sm:mb-6 leading-relaxed">
-                    <p class="text-gray-600 text-base sm:text-lg lg:text-2xl mb-2">
-                        Vismaya helps businesses achieve their full potential through innovative digital solutions
-                        and strategic growth strategies.
-                    </p>
-                </div>
-            </div>
-
-            <div class="flex flex-col items-center lg:items-start gap-2 sm:gap-4">
-                <a href="https://wa.me/+628976075402" target="_blank"
-                    class="flex slide-button items-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-lg bg-white border-2 border-green-500 text-green-500 overflow-hidden relative whatsapp-btn">
-
-                    <!-- Default Icon -->
-                    <img src="/src/assets/whatsapp.svg" class="w-5 h-5 relative z-10 icon-default" />
-
-                    <!-- White Icon (for hover) -->
-                    <img src="/src/assets/whatsapp-white.svg" class="w-5 h-5 relative z-10 icon-hover" />
-
-                    <span class="relative z-10">Chat With Us</span>
-                </a>
-            </div>
+        <!-- Text Content -->
+        <div class="w-full py-16 sm:py-24 lg:py-32 z-10 relative">
+            <h1
+                class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold leading-tight uppercase mb-4 sm:mb-6 bg-gradient-to-r from-white/100 to-[#9C9C9C] text-transparent bg-clip-text">
+                Stop planning<br class="inline" />
+                start
+                <span class="inline-block">
+                    {{ displayText }}
+                    <span v-if="showCursor" class="cursor-line"></span>
+                </span>
+            </h1>
+            <p
+                class="text-gray-300 text-xl sm:text-3xl xl:text-4xl leading-relaxed bg-gradient-to-r from-white/100 to-[#9C9C9C] text-transparent bg-clip-text">
+                Plans are good. Execution is 1000x better.
+            </p>
         </div>
 
-        <!-- Right Illustration -->
-        <div class="lg:flex-1 max-w-lg perspective mx-auto sm:mx-0" @mousemove="handleMouseMove"
-            @mouseleave="resetTransform">
-            <img ref="illustration" src="/src/assets/Hero.png" alt="Hero illustration"
-                class="w-64 sm:w-80 lg:w-full max-w-full transform transition-transform duration-300 illustration" />
+        <!-- Background Logo -->
+        <div class="absolute bottom-0 right-0 w-[50%] translate-x-[10%] translate-y-[10%] opacity-5 z-0">
+            <img src="/src/assets/vismaya-logo.png" alt="Vismaya Logo" class="w-full h-auto" />
         </div>
     </section>
 </template>
 
 <script setup>
-import Header from '../Header.vue';
 import { ref } from "vue";
 
-// Reactive state for 3D rotation
-const illustration = ref(null);
+const original = "doing";
+const target = "earning";
+const displayText = ref(original);
+const showCursor = ref(false);
 
-const handleMouseMove = (event) => {
-    const bounds = event.currentTarget.getBoundingClientRect();
-    const x = event.clientX - bounds.left;
-    const y = event.clientY - bounds.top;
+setTimeout(() => {
+    showCursor.value = true;
 
-    const centerX = bounds.width / 2;
-    const centerY = bounds.height / 2;
+    setTimeout(() => {
+        let i = original.length;
+        const deleteInterval = setInterval(() => {
+            displayText.value = displayText.value.slice(0, --i);
+            if (i === 0) {
+                clearInterval(deleteInterval);
 
-    const rotateX = ((y - centerY) / centerY) * 15;
-    const rotateY = ((x - centerX) / centerX) * -15;
-
-    illustration.value.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.1)`;
-};
-
-const resetTransform = () => {
-    illustration.value.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-};
+                setTimeout(() => {
+                    let j = 0;
+                    const typeInterval = setInterval(() => {
+                        displayText.value += target[j++];
+                        if (j === target.length) {
+                            clearInterval(typeInterval);
+                            showCursor.value = false;
+                        }
+                    }, 50);
+                }, 1000); // delay before typing starts
+            }
+        }, 50);
+    }, 1000); // delay after cursor appears, before deleting starts
+}, 2000);
 </script>
 
 <style scoped>
-/* Adding perspective to the parent container */
-.perspective {
-    perspective: 1000px;
+.cursor-line {
+    margin-bottom: -10px;
+    display: inline-block;
+    width: 2px;
+    height: 90px;
+    background-color: white;
+    animation: blink 1s step-end infinite;
 }
 
-.illustration {
-    transform-origin: center;
-    transition: transform 0.3s ease-out;
-}
+@keyframes blink {
 
-/* Slide Up Button */
-.slide-button::before {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #22c55e;
-    transition: all 0.3s;
-    z-index: 1;
-}
+    0%,
+    100% {
+        opacity: 1;
+    }
 
-.slide-button:hover::before {
-    top: 0;
-}
-
-.slide-button:hover {
-    color: white;
-}
-
-/* WhatsApp Icon Hover Effect */
-.icon-hover {
-    display: none;
-}
-
-.whatsapp-btn:hover .icon-default {
-    display: none;
-}
-
-.whatsapp-btn:hover .icon-hover {
-    display: inline;
+    50% {
+        opacity: 0;
+    }
 }
 </style>

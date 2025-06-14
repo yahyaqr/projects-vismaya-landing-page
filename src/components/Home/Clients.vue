@@ -1,39 +1,37 @@
 <template>
-    <section class="w-full px-4 py-4 bg-gray-100">
-        <div class="max-w-6xl flex mx-auto items-center">
-            <!-- Left Column: Title -->
-            <p class="text-sm text-gray-400 font-thin tracking-widest w-32">
-                OUR CLIENTS
-            </p>
+    <section class="relative text-white py-16 px-4 sm:py-20 sm:px-6 md:px-8">
+        <div class="mx-auto w-full px-4 sm:px-6">
+            <div class="flex flex-col py-10 lg:py-16 gap-8 sm:gap-10 md:gap-12 lg:gap-20">
+                <!-- Heading -->
+                <h2
+                    class="font-playfair text-white tracking-tight text-3xl sm:text-4xl md:text-5xl leading-tight text-center">
+                    Our Satisfied Partners
+                </h2>
 
-            <!-- Right Column: Carousel Wrapper -->
-            <div class="relative flex-1 overflow-hidden">
-                <!-- Carousel Items -->
-                <div class="flex transition-transform duration-500 ease-in-out"
-                    :style="{ transform: `translateX(-${currentIndex * (100 / 6)}%)` }">
-                    <div v-for="(client, index) in clients" :key="index"
-                        class="client-card w-1/6 flex-shrink-0 p-4 flex items-center justify-center relative transition-all duration-300 group">
-                        <!-- Client Logo and Info Container -->
-                        <div class="flex items-center w-full h-20 relative cursor-pointer transition-all duration-300">
-                            <!-- Client Logo -->
-                            <img :src="client.src" :alt="client.alt"
-                                class="w-20 h-20 object-contain transition-all duration-300" />
+                <!-- Logo Cloud -->
+                <div class="flex flex-wrap justify-center items-center gap-6">
+                    <component v-for="(logo, index) in partnerLogos" :key="index" :is="logo.link ? 'a' : 'div'"
+                        :href="logo.link || null" target="_blank" rel="noopener" :class="[
+                        'flex items-center justify-center max-w-[120px] max-h-[80px] w-full h-full p-2 rounded-md transition-transform hover:scale-105',
+                        logo.whiteBg ? 'bg-white' : ''
+                    ]" @mouseenter="hoveredIndex = index" @mouseleave="hoveredIndex = null">
+                        <img :src="logo.src" :alt="logo.alt"
+                            :class="['object-contain max-w-full max-h-full', logo.invert ? 'invert' : '']" />
+                    </component>
+                </div>
 
-                            <!-- Client Info (Slides out on hover) -->
-                            <div
-                                class="absolute left-24 w-0 group-hover:w-[calc(100%-6rem)] h-full bg-opacity-95 opacity-0 group-hover:opacity-100 transition-all duration-300 overflow-hidden">
-                                <div class="p-2 flex flex-col justify-center h-full">
-                                    <h3
-                                        class="text-sm font-semibold text-gray-800 whitespace-nowrap overflow-hidden text-ellipsis">
-                                        {{ client.alt }}
-                                    </h3>
-                                    <p class="text-xs text-gray-600 leading-snug mt-1 overflow-hidden">
-                                        {{ client.description }}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                <!-- After the logo grid -->
+                <div class="w-full pt-4 text-center text-base font-medium text-white min-h-[2.5rem] transition-all duration-200"
+                    style="min-height:2.5rem;">
+                    <span :class="[
+                        'bg-black bg-opacity-50 rounded px-4 py-2 inline-block shadow transition-opacity duration-200 leading-relaxed font-light',
+                        hoveredIndex !== null ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                    ]" style="transition:opacity 0.2s;">
+                        {{ hoveredIndex !== null
+                        ? partnerLogos[hoveredIndex].alt + ': ' + partnerLogos[hoveredIndex].description
+                        : '\u00A0' }}
+                    </span>
                 </div>
             </div>
         </div>
@@ -41,58 +39,59 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref } from 'vue';
 
-const clients = [
-    { src: '/clients/berkaslegal.png', alt: 'Berkas Legal', description: 'Legal competency training institute.' },
-    { src: '/clients/ptchc.png', alt: 'PT CHC', description: 'Steel fabricator for construction projects.' },
-    { src: '/clients/iwpc.png', alt: 'IWPC', description: 'Community of Indonesian wedding photographers.' },
-    { src: '/clients/kmcm.png', alt: 'KMCM', description: 'Comprehensive eye care service provider.' },
-    { src: '/clients/magalarva.png', alt: 'Magalarva', description: 'Sustainable protein producer from food waste.' },
-    { src: '/clients/sabilamall.png', alt: 'Sabilamall', description: 'Reseller and dropshipper platform in Indonesia.' },
-    { src: '/clients/ptsgn.png', alt: 'PT Sumber Guna Nusantara', description: 'Supplier of building finishing materials.' },
-    { src: '/clients/wbaf.png', alt: 'WBAF', description: 'Global organization supporting business finance.' },
-    { src: '/clients/ptzulin.png', alt: 'PT Zulin', description: 'Formwork and scaffolding solutions provider.' },
-    { src: '/clients/selfashion.png', alt: 'Selfashion', description: 'Custom fashion design startup.' },
-    { src: '/clients/congen.png', alt: 'Connecting Generations', description: 'FTUI alumni election campaign.' },
-    { src: '/clients/fishcore.png', alt: 'Fishcore', description: 'Biofloc fish farming learning platform.' },
-    { src: '/clients/nyambee.png', alt: 'Nyambee', description: 'Platform connecting creators with clients.' },
-    { src: '/clients/streameal.png', alt: 'Streameal', description: 'Food business for movie streaming.' },
-    { src: '/clients/sajadang.png', alt: 'Sajadang', description: 'Competition to turn waste into money.' },
-];
+const hoveredIndex = ref(null);
 
-const currentIndex = ref(0);
-let autoScrollInterval;
+const partnerLogos = ref([
+    { src: '/src/assets/clients-2/berkaslegal.png', invert: false, whiteBg: true, alt: 'Berkas Legal', description: 'Legal competency training institute.', link: 'https://www.instagram.com/berkas_legal/', },
+    { src: '/src/assets/clients-2/congen.png', invert: false, whiteBg: true, alt: 'Connecting Generations', description: 'FTUI alumni election campaign.', link: 'https://connectinggenerations.netlify.app/', },
+    { src: '/src/assets/clients-2/fishcore.png', invert: false, whiteBg: true, alt: 'Fishcore', description: 'Biofloc fish farming learning platform.', link: 'https://www.fishcore.id/', },
+    { src: '/src/assets/clients-2/iwpc.png', invert: false, whiteBg: true, alt: 'IWPC', description: 'Community of Indonesian wedding photographers.', link: 'https://www.instagram.com/iwpc.id/', },
+    { src: '/src/assets/clients-2/kmcm.png', invert: false, whiteBg: true, alt: 'KMCM', description: 'Comprehensive eye care service provider.', link: 'https://www.instagram.com/klinikmatacibinongmedika/', },
+    { src: '/src/assets/clients-2/magalarva.png', invert: false, whiteBg: true, alt: 'Magalarva', description: 'Sustainable protein producer from food waste.', link: 'https://www.instagram.com/magalarva/', },
+    { src: '/src/assets/clients-2/nyambee.png', invert: false, whiteBg: true, alt: 'Nyambee', description: 'Platform connecting creators with clients.', link: 'https://www.instagram.com/nyambee_official/', },
+    { src: '/src/assets/clients-2/ptchc.png', invert: false, whiteBg: true, alt: 'PT CHC', description: 'Steel fabricator for construction projects.', link: 'https://cigading-habeam.com/', },
+    { src: '/src/assets/clients-2/ptsgn.png', invert: false, whiteBg: true, alt: 'PT Sumber Guna Nusantara', description: 'Supplier of building finishing materials.', link: 'https://sumbergunanusantara.co.id/', },
+    { src: '/src/assets/clients-2/ptzulin.png', invert: false, whiteBg: true, alt: 'PT Zulin', description: 'Formwork and scaffolding solutions provider.', link: 'https://zulin.co.id/', },
+    { src: '/src/assets/clients-2/sabilamall.png', invert: false, whiteBg: true, alt: 'Sabilamall', description: 'Reseller and dropshipper platform in Indonesia.', link: 'https://www.sabilamall.co.id/', },
+    { src: '/src/assets/clients-2/sajadang.png', invert: false, whiteBg: true, alt: 'Sajadang', description: 'Competition to turn waste into money.', },
+    { src: '/src/assets/clients-2/selfashion.png', invert: false, whiteBg: true, alt: 'Selfashion', description: 'Custom fashion design startup.', },
+    { src: '/src/assets/clients-2/streameal.png', invert: false, whiteBg: true, alt: 'Streameal', description: 'Food business for movie streaming.', link: 'https://www.instagram.com/streameal/', },
+    { src: '/src/assets/clients-2/wbaf.png', invert: false, whiteBg: true, alt: 'WBAF', description: 'Global organization supporting business finance.', link: 'https://www.instagram.com/angelsweek.id/', },
+]);
 
-const startAutoScroll = () => {
-    autoScrollInterval = setInterval(() => {
-        currentIndex.value = (currentIndex.value + 1) % (clients.length - 5); // Adjust for 5 visible items
-    }, 3000);
-};
-
-const stopAutoScroll = () => {
-    clearInterval(autoScrollInterval);
-};
-
-onMounted(() => {
-    startAutoScroll();
-});
-
-onUnmounted(() => {
-    stopAutoScroll();
-});
+// const partnerLogos = ref([
+//     { src: '/src/assets/clients/1-ibiza.png', invert: false },
+//     { src: '/src/assets/clients/2-krispy.png', invert: false },
+//     { src: '/src/assets/clients/3-uniqlo.png', invert: false },
+//     { src: '/src/assets/clients/4-atome.png', invert: false },
+//     { src: '/src/assets/clients/5-tanamera.png', invert: false },
+//     { src: '/src/assets/clients/6-hsbc.png', invert: false },
+//     { src: '/src/assets/clients/7-pertamina.png', invert: false },
+//     { src: '/src/assets/clients/8-kai.png', invert: false },
+//     { src: '/src/assets/clients/9-nyu.png', invert: false },
+//     { src: '/src/assets/clients/10-wuling.png', invert: false },
+//     { src: '/src/assets/clients/11-3ce.png', invert: true },
+//     { src: '/src/assets/clients/12-tmii.png', invert: false },
+//     { src: '/src/assets/clients/13-suko.png', invert: false },
+//     { src: '/src/assets/clients/14-kasual.png', invert: false }
+// ]);
 </script>
 
 <style scoped>
-.client-card {
-    transition: all 0.3s ease;
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.2s;
 }
 
-.client-card:hover {
-    width: 35% !important;
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
 }
 
-.client-card:hover~.client-card {
-    width: 13% !important;
+.fade-enter-to,
+.fade-leave-from {
+    opacity: 1;
 }
 </style>
